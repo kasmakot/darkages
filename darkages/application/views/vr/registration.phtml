@@ -1,0 +1,124 @@
+<center>
+	<h2><b>Регистрация</b></h2>
+</center>
+
+<div class='page'>
+	<form method='POST'>
+		<table border='0' align='center' border='0' cellspacing='5' cellpadding='0'>
+			<tr>
+				<td align='right' width='20%'></td>
+				<td align='left' width='80%'>
+					Данные, видимые другим игрокам
+					выделены <b>жирным</b> шрифтом
+				</td>
+			</tr>
+			<? if (isset($system_errors)) { ?>
+				<tr><td></td>
+					<td><? foreach ($system_errors as $errorText) { ?>
+						<p class='error-text'><?= $errorText ?></p>
+					<? } ?></td>
+				</tr>
+			<? } ?>
+			<tr><td align='right'><b>Имя</b></td>
+				<td><input type='text' name='name' value='<?= isset($params) ? $params['name'] : '' ?>'/></td>
+			</tr>
+			<tr><td align='right'><b>Фамилия</b></td>
+				<td><input type='text' name='surname' value='<?= isset($params) ? $params['surname'] : '' ?>'/></td>
+			</tr>
+			<tr><td align='right'>eMail</td>
+				<td>
+					<input type='text' name='email' value='<?= isset($params) ? $params['email'] : '' ?>'/>
+				</td>
+			</tr>
+			<tr><td></td>
+				<td>
+					<p class='info-text'>Электронный адрес не показывается на сайте.</p>
+					<p class='info-text'>Если Вы забыли свой пароль он будет выслан на этот адрес.</p>
+				</td>
+			</tr>
+			<tr><td align='right'><b>Страна</b></td>
+				<td><input type='text' name='country' value='<?= isset($params) ? $params['country'] : '' ?>'/></td>
+			</tr>
+			<tr><td align='right'><b>Город</b></td>
+				<td><input type='text' name='city' value='<?= isset($params) ? $params['city'] : '' ?>'/></td>
+			</tr>
+			<tr><td valign='top' align='right'>Дата рождения</td>
+				<td>
+					<input type='text' name='birthday' value='<?= isset($params) ? $params['birthday'] : '' ?>'/>
+					<p class='info-text'>Например, 25.12.1975</p>
+				</td>
+			</tr>
+			<tr><td align='right'>Пол</td>
+				<td>
+					<select name='sex'>
+						<option value='-1' <?= !isset($params) || (key_exists('sex', $params)
+							&& $params['sex'] == -1) ? 'selected' : '' ?>>Укажите пол</option>
+						<option value='0' <?= isset($params) && key_exists('sex', $params)
+							&& $params['sex'] == 0 ? 'selected' : '' ?>>Мужской</option>
+						<option value='1' <?= isset($params) && key_exists('sex', $params)
+							&& $params['sex'] == 1 ? 'selected' : '' ?>>Женский</option>
+					</select>
+				</td>
+			</tr>
+			<tr><td align='right'><strong>Ник</strong></td>
+				<td><input type='text' name='login' value='<?= isset($params) ? $params['login'] : '' ?>'/></td>
+			</tr>
+			<tr><td></td><td><p class='info-text'>Имя, которое будут видеть остальные игроки</p></td></tr>
+			<tr><td align='right'>Пароль</td>
+				<td><input type='password' name='password'/></td>
+			</tr>
+			<tr><td align='right'>Подтверждение пароля</td>
+				<td><input type='password' name='repeat'/></td>
+			</tr>
+			<tr><td align='right'>ICQ</td>
+				<td><input type='text' name='icq' value='<?= isset($params) ? $params['icq'] : '' ?>'/></td>
+			</tr>
+			<tr><td align='right'>America Online Instant Messenger</td>
+				<td><input type='text' name='aol' value='<?= isset($params) ? $params['aol'] : '' ?>'/></td>
+			</tr>
+			<tr><td align='right' valign='top'><b>О себе</b></td>
+				<td><textarea name='info' rows='4' cols='30'><?= isset($params) ? $params['info'] : '' ?></textarea></td>
+			</tr>
+			<tr><td valign='top' align='right'><strong>Раса</strong></td>
+				<td>
+					<table>
+						<tr>
+							<td valign='top'>
+								<div><input id='rbRace_0' type='radio' name='race' value='1'
+									<?= isset($params) && key_exists('race', $params) && $params['race'] == 1 ? 'checked' : '' ?>>
+									<label for='rbRace_0'>Орк</label></div>
+								<div><input id='rbRace_1' type='radio' name='race' value='2'
+									<?= isset($params) && key_exists('race', $params) && $params['race'] == 2 ? 'checked' : '' ?>>
+									<label for='rbRace_1'>Человек</label></div>
+								<div><input id='rbRace_2' type='radio' name='race' value='3'
+									<?= isset($params) && key_exists('race', $params) && $params['race'] == 3 ? 'checked' : '' ?>>
+									<label for='rbRace_2'>Эльф</label></div>
+							</td>
+							<td>&nbsp;</td>
+							<td valign='top'>
+								<p class='info-text'><strong>Орки</strong> - сильные</p>
+								<p class='info-text'><strong>Люди</strong> - удачливые</p>
+								<p class='info-text'><strong>Эльфы</strong> - ловкие</p>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr><td align='right'>Как вы узнали о "Смутных Временах"</td>
+				<td><input type='text' name='partner' value='<?= isset($params) ? $params['partner'] : '' ?>'/></td>
+			</tr>
+			<!--<tr><td align='right'>Введите шестизначное число, которое вы видите на картинке</td>
+				<td>
+					<input type='text' name='captcha' />
+					<img src='/captcha/' height='15' />
+				</td>
+			</tr>-->
+			<tr><td></td>
+				<td>
+					<button type='submit'>Зарегистрировать</button>
+					<a href='/vr/default/'><button type='button'>Отмена</button></a>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>

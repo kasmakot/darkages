@@ -1,0 +1,11 @@
+RewriteEngine On
+
+RewriteRule ^avatar/(.*)$ avatar.php?id=$1
+
+RewriteBase /
+
+RewriteRule ^index.php\.php$ - [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]

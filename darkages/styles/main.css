@@ -1,0 +1,31 @@
+button {
+	cursor: pointer;
+}
+
+input, button {
+	border-right: 1px solid;
+	border-left: 1px solid;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+}
+
+table {
+	font-size: x-small;
+}
+
+body {
+	font-size: x-small;
+	font-family: Arial;
+	background-color: #f0f3f7;
+}
+
+p.info-text {
+	color: #000099;
+	margin-top: 0px;
+	margin-bottom: 2px;
+}
+p.error-text {
+	color: #990000;
+	margin-top: 0px;
+	margin-bottom: 2px;
+}
